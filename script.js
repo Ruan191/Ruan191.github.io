@@ -4,7 +4,6 @@ const repoCountEl = document.getElementById('repoCount');
 const followersEl = document.getElementById('followers');
 const yearEl = document.getElementById('year');
 const liveStatus = document.getElementById('liveStatus');
-const themeToggle = document.getElementById('themeToggle');
 const backToTop = document.getElementById('backToTop');
 
 yearEl.textContent = new Date().getFullYear();
@@ -55,20 +54,7 @@ function escapeHtml(str){
   return str && str.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 }
 
-// Theme Toggle
-const root = document.documentElement;
-if (localStorage.getItem('theme') === 'light') {
-  root.classList.add('light');
-  themeToggle.textContent = '🌙';
-}
-
-themeToggle.addEventListener('click', () => {
-  const isLight = root.classList.toggle('light');
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  themeToggle.textContent = isLight ? '🌙' : '☀️';
-});
-
-// Back to top button
+// Back to top
 window.addEventListener('scroll', () => {
   backToTop.style.opacity = window.scrollY > 600 ? 1 : 0;
 });
